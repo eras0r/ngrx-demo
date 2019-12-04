@@ -8,6 +8,13 @@
       "schematics": {
         "@ngrx/schematics:component": {
           "styleext": "scss"
+        },
+        "@ngrx/schematics:feature": {
+          "creators": true,
+          "flat": false
+        },
+        "@ngrx/schematics:action": {
+          "creators": true
         }
       },
       "root": "",
