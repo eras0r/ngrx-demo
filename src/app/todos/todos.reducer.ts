@@ -18,6 +18,15 @@ const todosReducer = createReducer(
   on(TodosActions.loadTodos, state => state),
   on(TodosActions.loadTodosSuccess, (state, action) => state),
   on(TodosActions.loadTodosFailure, (state, action) => state),
+  on(TodosActions.addTodo, (state, {addedTodo}) => {
+    return {
+      ...state,
+      todos: [
+        ...state.todos,
+        addedTodo
+      ]
+    };
+  })
 );
 
 export function reducer(state: TodosState | undefined, action: Action) {

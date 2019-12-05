@@ -1,5 +1,7 @@
-export interface Todo {
-  id: string;
-  name: string;
-  done: boolean;
+export class Todo {
+    done: boolean;
+
+    constructor(public id: string, public name: string) {
+    }
+
 }
