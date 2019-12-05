@@ -4,26 +4,26 @@ import {TodosState} from '../../todos.reducer';
 import {Observable} from 'rxjs';
 import {Todo} from '../../todos.model';
 import {selectTodos} from '../../todos.selectors';
+import {changeTodo} from '../../todos.actions';
 
 @Component({
-  selector: 'app-todos-container',
-  templateUrl: './todos-container.component.html',
-  styleUrls: ['./todos-container.component.css']
+    selector: 'app-todos-container',
+    templateUrl: './todos-container.component.html',
+    styleUrls: ['./todos-container.component.css']
 })
 export class TodosContainerComponent implements OnInit {
 
-  todos$: Observable<Todo[]>;
+    todos$: Observable<Todo[]>;
 
-  constructor(private store: Store<TodosState>) {
-  }
+    constructor(private store: Store<TodosState>) {
+    }
 
-  ngOnInit() {
-    this.todos$ = this.store.pipe(select(selectTodos));
-  }
+    ngOnInit() {
+        this.todos$ = this.store.pipe(select(selectTodos));
+    }
 
-  changeTodo(todo: Todo): void {
-    // TODO dispatch action
-    console.log('todo has been changed: ', todo);
-  }
+    changeTodo(todo: Todo): void {
+        this.store.dispatch(changeTodo({changedTodo: todo}));
+    }
 
 }

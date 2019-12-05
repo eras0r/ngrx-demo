@@ -19,3 +19,8 @@ export const addTodo = createAction(
   '[Todos] Add Todo',
   props<{ addedTodo: Todo }>()
 );
+
+export const changeTodo = createAction(
+  '[Todos] Change Todo',
+  props<{ changedTodo: Todo }>()
+);

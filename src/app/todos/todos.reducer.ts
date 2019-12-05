@@ -26,6 +26,19 @@ const todosReducer = createReducer(
         addedTodo
       ]
     };
+  }),
+  on(TodosActions.changeTodo, (state, {changedTodo}) => {
+    const newState = {
+      ...state,
+      todos: [
+        ...state.todos
+      ]
+    };
+
+    const idx = newState.todos.findIndex((t) => t.id === changedTodo.id);
+    newState.todos[idx] = changedTodo;
+
+    return newState;
   })
 );
 
