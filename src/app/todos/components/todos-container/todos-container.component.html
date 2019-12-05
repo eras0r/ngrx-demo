@@ -2,4 +2,4 @@
 
 <app-todo-create></app-todo-create>
 
-<app-todos-list [todos]="todos$ | async"></app-todos-list>
+<app-todos-list [todos]="todos$ | async" (todoChanged)="changeTodo($event)"></app-todos-list>

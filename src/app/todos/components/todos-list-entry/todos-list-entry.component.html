@@ -1,0 +1,15 @@
+<!-- TODO move form to outer component -->
+<form #todoForm="ngForm" [formGroup]="todoFormGroup">
+  <div>
+    <input type="checkbox" formControlName="done" (change)="toggleTodo()">
+
+    <span [hidden]="editing" (click)="toggleEditing()">
+      {{todo.name}}
+    </span>
+    <span [hidden]="!editing">
+      <input type="text" formControlName="name"
+             (keyup.enter)="updateText()"
+             (blur)="updateText()">
+    </span>
+  </div>
+</form>

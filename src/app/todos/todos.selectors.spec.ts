@@ -9,7 +9,6 @@ describe('Todos Selectors', () => {
       }
     });
 
-    console.log('result: ', result);
     expect(result).toEqual({todos: []});
   });
 });

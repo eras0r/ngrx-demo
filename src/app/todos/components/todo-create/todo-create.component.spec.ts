@@ -1,17 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TodoCreateComponent } from './todo-create.component';
-import { Store, StoreModule } from '@ngrx/store';
+import {TodoCreateComponent} from './todo-create.component';
+import {Store, StoreModule} from '@ngrx/store';
+import {TodosState} from '../../todos.reducer';
+import {SharedModule} from '../../../shared/shared.module';
 
 describe('TodoCreateComponent', () => {
   let component: TodoCreateComponent;
   let fixture: ComponentFixture<TodoCreateComponent>;
-  let store: Store<any>;
+  let store: Store<TodosState>;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [ StoreModule.forRoot({}) ],
-      declarations: [ TodoCreateComponent ]
+      imports: [
+        StoreModule.forRoot({}),
+        SharedModule
+      ],
+      declarations: [TodoCreateComponent]
     });
 
     await TestBed.compileComponents();
@@ -20,7 +25,7 @@ describe('TodoCreateComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TodoCreateComponent);
     component = fixture.componentInstance;
-    store = TestBed.get<Store>(Store);
+    store = TestBed.get<Store<TodosState>>(Store);
 
     spyOn(store, 'dispatch').and.callThrough();
     fixture.detectChanges();

@@ -21,4 +21,9 @@ export class TodosContainerComponent implements OnInit {
     this.todos$ = this.store.pipe(select(selectTodos));
   }
 
+  changeTodo(todo: Todo): void {
+    // TODO dispatch action
+    console.log('todo has been changed: ', todo);
+  }
+
 }

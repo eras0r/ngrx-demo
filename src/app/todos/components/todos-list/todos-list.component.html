@@ -1,6 +1,5 @@
 <p>todos-list works!</p>
 
 <div *ngFor="let todo of todos">
-  <input type="checkbox" [checked]="todo.done">
-  {{todo.name}}
+  <app-todos-list-entry [todo]="todo" (todoChanged)="todoChanged.emit($event)"></app-todos-list-entry>
 </div>
