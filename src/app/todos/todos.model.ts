@@ -1,5 +1,5 @@
 export class Todo {
-    done: boolean;
+    done = false;
 
     constructor(public id: string, public name: string) {
     }
