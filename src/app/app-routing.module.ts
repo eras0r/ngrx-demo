@@ -12,6 +12,15 @@ const routes: Routes = [
     loadChildren: () =>
       import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   },
+  {
+    path: 'todos',
+    loadChildren: () =>
+      import('./todos/todos.module').then(m => m.TodosModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'dashboard'
+  }
 ];
 
 @NgModule({

@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import {TodosContainerComponent} from './todos-container/todos-container.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
-    data: {title: 'app.menu.dashboard'}
+    component: TodosContainerComponent,
+    data: {title: 'app.menu.todos'}
   }
 ];
 
@@ -18,5 +18,5 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class DashboardRoutingModule {
+export class TodosRoutingModule {
 }
