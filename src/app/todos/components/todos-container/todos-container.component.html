@@ -3,3 +3,5 @@
 <app-todo-create></app-todo-create>
 
 <app-todos-list [todos]="todos$ | async" (todoChanged)="changeTodo($event)"></app-todos-list>
+
+<button type="button" (click)="removeCompleted()">Remove completed</button>

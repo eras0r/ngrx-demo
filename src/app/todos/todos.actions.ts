@@ -24,3 +24,7 @@ export const changeTodo = createAction(
   '[Todos] Change Todo',
   props<{ changedTodo: Todo }>()
 );
+
+export const removeCompletedTodos = createAction(
+  '[Todos] Remove completed Todos'
+);

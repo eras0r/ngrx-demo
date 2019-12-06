@@ -39,6 +39,15 @@ const todosReducer = createReducer(
     newState.todos[idx] = changedTodo;
 
     return newState;
+  }),
+  on(TodosActions.removeCompletedTodos, (state) => {
+    return {
+      ...state,
+      todos: [
+        ...state.todos
+          .filter((t) => !t.done)
+      ]
+    };
   })
 );
 

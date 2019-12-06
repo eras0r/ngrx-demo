@@ -4,7 +4,7 @@ import {TodosState} from '../../todos.reducer';
 import {Observable} from 'rxjs';
 import {Todo} from '../../todos.model';
 import {selectTodos} from '../../todos.selectors';
-import {changeTodo} from '../../todos.actions';
+import {changeTodo, removeCompletedTodos} from '../../todos.actions';
 
 @Component({
     selector: 'app-todos-container',
@@ -25,5 +25,9 @@ export class TodosContainerComponent implements OnInit {
     changeTodo(todo: Todo): void {
         this.store.dispatch(changeTodo({changedTodo: todo}));
     }
+
+  removeCompleted(): void {
+    this.store.dispatch(removeCompletedTodos());
+  }
 
 }
