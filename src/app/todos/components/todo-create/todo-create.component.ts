@@ -8,7 +8,7 @@ import {addTodo} from '../../todos.actions';
 @Component({
   selector: 'app-todo-create',
   templateUrl: './todo-create.component.html',
-  styleUrls: ['./todo-create.component.css'],
+  styleUrls: ['./todo-create.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoCreateComponent implements OnInit {
