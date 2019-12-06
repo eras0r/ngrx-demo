@@ -7,7 +7,12 @@
       "projectType": "application",
       "schematics": {
         "@ngrx/schematics:component": {
-          "styleext": "scss"
+          "styleext": "scss",
+          "changeDetection": "OnPush"
+        },
+        "@ngrx/schematics:container": {
+          "styleext": "scss",
+          "changeDetection": "OnPush"
         },
         "@ngrx/schematics:feature": {
           "creators": true,
