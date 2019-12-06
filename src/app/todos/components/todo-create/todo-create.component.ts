@@ -1,5 +1,5 @@
 import {v4 as uuid} from 'uuid';
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {TodosState} from '../../todos.reducer';
 import {Todo} from '../../todos.model';
@@ -8,7 +8,8 @@ import {addTodo} from '../../todos.actions';
 @Component({
   selector: 'app-todo-create',
   templateUrl: './todo-create.component.html',
-  styleUrls: ['./todo-create.component.css']
+  styleUrls: ['./todo-create.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoCreateComponent implements OnInit {
 

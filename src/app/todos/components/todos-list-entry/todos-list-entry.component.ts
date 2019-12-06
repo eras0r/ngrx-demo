@@ -1,11 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Todo} from '../../todos.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-todos-list-entry',
   templateUrl: './todos-list-entry.component.html',
-  styleUrls: ['./todos-list-entry.component.css']
+  styleUrls: ['./todos-list-entry.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodosListEntryComponent implements OnInit {
 
@@ -15,7 +16,7 @@ export class TodosListEntryComponent implements OnInit {
   @Output()
   todoChanged = new EventEmitter<Todo>();
 
-  editing = false;
+  isEditing = false;
 
   todoFormGroup: FormGroup;
 
@@ -31,7 +32,7 @@ export class TodosListEntryComponent implements OnInit {
   }
 
   toggleEditing(): void {
-    this.editing = !this.editing;
+    this.isEditing = !this.isEditing;
   }
 
   updateText(): void {

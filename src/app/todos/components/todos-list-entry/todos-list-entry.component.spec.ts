@@ -2,12 +2,13 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TodosListEntryComponent} from './todos-list-entry.component';
 import {SharedModule} from '../../../shared/shared.module';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {Todo} from '../../todos.model';
 
 @Component({
   selector: 'app-todos-list-entry-test',
-  template: '<app-todos-list-entry [todo]="todo"></app-todos-list-entry>'
+  template: '<app-todos-list-entry [todo]="todo"></app-todos-list-entry>',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 class TestTodosListEntryComponent {
   todo = new Todo('1', 'do it');
