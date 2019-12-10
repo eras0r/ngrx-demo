@@ -4,8 +4,17 @@ import {ActionType} from '@ngrx/store/src/models';
 import {On} from '@ngrx/store/src/reducer_creator';
 
 /**
+ * re-usable on functions for ngrx with wrap immers produce functions and allow you to simply change the state without manipulations the
+ * original objects and without the hassle of (deep) cloning objects and arrays.
+ *
  * Code taken from https://github.com/timdeschryver/ngrx-etc/blob/master/src/mutable-on/mutable-on.ts
  * But because ngrx-etc is incompatible with @ngrx/store 8.5.x (DisallowTypeProperty has been refactored) the relevant code has been copied.
+ *
+ * Warning: sometimes immer seems to manipulate (eg. when the object is a class instance) the original object, which causes problems with
+ * ngrx's strictStateImmutability checks (see https://madewithlove.be/immutability-with-immer/ for more details).
+ * In such cases you can see an error similar to 'ERROR TypeError: Cannot add property 0, object is not extensible'
+ * within the browser's console and the state will not be changed!
+ * To avoid this use interfaces and simple object rather than class instances.
  */
 export type MutableOnReducer<S, C extends ActionCreator[], D = Draft<S>> = (state: D, action: ActionType<C[number]>) => void;
 
