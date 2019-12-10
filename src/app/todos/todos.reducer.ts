@@ -1,6 +1,7 @@
-import {Action, createReducer, on} from '@ngrx/store';
+import {Action, createReducer} from '@ngrx/store';
 import * as TodosActions from './todos.actions';
 import {Todo} from './todos.model';
+import {mutableOn} from '../core/mutable-on';
 
 export const todosFeatureKey = 'todos';
 
@@ -12,42 +13,23 @@ export const initialState: TodosState = {
   todos: []
 };
 
-const todosReducer = createReducer(
+const todosReducer = createReducer<TodosState>(
   initialState,
 
-  on(TodosActions.loadTodos, state => state),
-  on(TodosActions.loadTodosSuccess, (state, action) => state),
-  on(TodosActions.loadTodosFailure, (state, action) => state),
-  on(TodosActions.addTodo, (state, {addedTodo}) => {
-    return {
-      ...state,
-      todos: [
-        ...state.todos,
-        addedTodo
-      ]
-    };
+  mutableOn(TodosActions.loadTodosSuccess, (state, {todos}) => {
+    state.todos = todos;
   }),
-  on(TodosActions.changeTodo, (state, {changedTodo}) => {
-    const newState = {
-      ...state,
-      todos: [
-        ...state.todos
-      ]
-    };
-
-    const idx = newState.todos.findIndex((t) => t.id === changedTodo.id);
-    newState.todos[idx] = changedTodo;
-
-    return newState;
+  mutableOn(TodosActions.addTodo, (state, {addedTodo}) => {
+    state.todos.push(addedTodo);
   }),
-  on(TodosActions.removeCompletedTodos, (state) => {
-    return {
-      ...state,
-      todos: [
-        ...state.todos
-          .filter((t) => !t.done)
-      ]
-    };
+  mutableOn(TodosActions.changeTodo, (state, {changedTodo}) => {
+    const idx = state.todos.findIndex((t) => t.id === changedTodo.id);
+    if (idx > -1) {
+      state.todos[idx] = changedTodo;
+    }
+  }),
+  mutableOn(TodosActions.removeCompletedTodos, (state) => {
+    state.todos = state.todos.filter((t) => !t.done);
   })
 );
 
