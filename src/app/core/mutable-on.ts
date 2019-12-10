@@ -3,6 +3,10 @@ import {Action, ActionCreator} from '@ngrx/store';
 import {ActionType} from '@ngrx/store/src/models';
 import {On} from '@ngrx/store/src/reducer_creator';
 
+/**
+ * Code taken from https://github.com/timdeschryver/ngrx-etc/blob/master/src/mutable-on/mutable-on.ts
+ * But because ngrx-etc is incompatible with @ngrx/store 8.5.x (DisallowTypeProperty has been refactored) the relevant code has been copied.
+ */
 export type MutableOnReducer<S, C extends ActionCreator[], D = Draft<S>> = (state: D, action: ActionType<C[number]>) => void;
 
 export function mutableOn<C1 extends ActionCreator,
